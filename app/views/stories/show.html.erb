@@ -1,2 +1,19 @@
 <h1> <%= @story.name %> </h1>
 <p> <%= @story.description %> </p>
+<ul>
+<% @narrations.each do |narration| %>
+  <%= narration.body %>
+<% end %>
+</ul>
+<div>
+  <%= form_for([@story, @narration]) do |f| %>
+    <div class="field">
+      <%= f.label :body %><br />
+      <%= f.text_field :body %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "Confirm Action" %>
+    </div>
+  <% end %>
+</div>
