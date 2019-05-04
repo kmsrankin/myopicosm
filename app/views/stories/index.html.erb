@@ -1,0 +1,4 @@
+<h1>Select which story you would like to contribute to!<h1>
+  <% @stories.each do |story| %>
+    <%= link_to story.name, story_path(story.id) %>
+  <% end %>
