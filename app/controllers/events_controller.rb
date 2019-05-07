@@ -1,6 +1,5 @@
 class EventsController < ApplicationController
   def show
-    binding.pry
     @event = Event.find(params[:id])
     @story = @event.story
     @possibilities = Possibility.where(event_id: @event.id)
