@@ -6,9 +6,12 @@
       if event.selected_possibility_id
         possibility =  Possibility.find(event.selected_possibility_id).body
       else
-        possibility = "What could be next?"
+        possibility = "Explore the possibilities..."
       end
     %>
     <li><%= link_to possibility, story_event_path(@story.id, event.id) %></li>
   <% end %>
 </ul>
+
+<div id='app'>
+</div>

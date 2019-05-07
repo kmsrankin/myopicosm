@@ -6,13 +6,12 @@ class PossibilitiesController < ApplicationController
     @possibility.event = @event
     @possibility.user = @user
     @story = @event.story
-    binding.pry
     if @possibility.save
       flash[:notice] = "Possibility created successfully"
-      redirect_to story_path(@story.id)
+      redirect_to story_event_path(@story.id, @event.id)
     else
       flash[:error] = @possibility.errors.full_messages.join(", ")
-      redirect_to story_path(@story.id)
+      redirect_to story_event_path(@story.id, @event.id)
     end
   end
 
