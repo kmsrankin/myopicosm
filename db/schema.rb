@@ -10,19 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_04_184214) do
+ActiveRecord::Schema.define(version: 2019_05_06_144603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "narrations", force: :cascade do |t|
-    t.string "body", null: false
+  create_table "events", force: :cascade do |t|
     t.bigint "story_id", null: false
+    t.integer "selected_possibility_id"
+    t.index ["story_id"], name: "index_events_on_story_id"
+  end
+
+  create_table "possibilities", force: :cascade do |t|
+    t.string "body", null: false
+    t.bigint "event_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["story_id"], name: "index_narrations_on_story_id"
-    t.index ["user_id"], name: "index_narrations_on_user_id"
+    t.index ["event_id"], name: "index_possibilities_on_event_id"
+    t.index ["user_id"], name: "index_possibilities_on_user_id"
   end
 
   create_table "stories", force: :cascade do |t|

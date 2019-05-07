@@ -1,0 +1,17 @@
+<% @possibilities.each do |possibility| %>
+  <%= possibility.body %>
+<% end %>
+<div>
+  <% if !@event.selected_possibility_id %>
+    <%= form_for([@story, @event, @possibility]) do |f| %>
+      <div class="field">
+        <%= f.label :body %><br />
+        <%= f.text_field :body %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Confirm Action" %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

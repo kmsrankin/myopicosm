@@ -1,9 +1,9 @@
-class CreateNarrations < ActiveRecord::Migration[5.2]
+class CreatePossibilities < ActiveRecord::Migration[5.2]
   def change
-    create_table :narrations do |t|
+    create_table :possibilities do |t|
       t.string :body, null: false
 
-      t.belongs_to :story, null: false
+      t.belongs_to :event, null: false
       t.belongs_to :user, null: false
 
       t.timestamps null: false
