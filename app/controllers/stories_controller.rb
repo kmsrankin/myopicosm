@@ -5,7 +5,13 @@ class StoriesController < ApplicationController
 
   def show
     @story = Story.find(params[:id])
-    @narrations = Narration.where(story_id: @story.id)
-    @narration = Narration.new
+    @events = Event.where(story_id: @story.id)
+    # @selected_possibilities = @events.map do |event|
+    #   if event.selected_possibility_id
+    #     Possibility.find(event.selected_possibility_id)
+    #   else
+    #     {possibility: {body: "Decide what's next!"}}
+    #   end
+    # end
   end
 end
