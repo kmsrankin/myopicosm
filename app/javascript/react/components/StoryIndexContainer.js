@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
+import StoryTile from './StoryTile'
 
-class Story extends Component {
+class StoryIndexContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      story: {},
-      events: []
+      stories: [],
     }
   }
 
   componentDidMount() {
-    let storyId = this.props.params.id
-    fetch(`/api/v1/stories/${storyId}`)
+    fetch(`/api/v1/stories`)
       .then(response => {
         if (response.ok) {
           return response;
@@ -23,22 +22,28 @@ class Story extends Component {
       })
       .then(response => response.json())
       .then(response => {
-        let story = response
+        let stories = response
         this.setState( {
-          story: story
+          stories: stories
         } )
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render(){
+    let stories = this.state.stories.map((story) => {
+      return(
+        <StoryTile
+          name={story.name}
+          id={story.id}
+          key={story.id}
+        />
+      )
+    })
     return(
-      <div>
-        <h1>{ this.state.story.name }</h1>
-        <p>{ this.state.story.description }</p>
-      </div>
+      <ul>{stories}</ul>
     )
   }
 }
 
-export default Story
+export default StoryIndexContainer
