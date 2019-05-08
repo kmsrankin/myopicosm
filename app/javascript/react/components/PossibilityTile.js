@@ -3,7 +3,7 @@ import React from 'react'
 const PossibilityTile = (props) => {
   return(
     <li>
-      {props.body}
+        {props.body}
     </li>
   )
 }
