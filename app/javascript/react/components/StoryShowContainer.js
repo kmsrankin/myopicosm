@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router'
+import PossibilityTile from './PossibilityTile'
 
 class StoryShowContainer extends Component {
   constructor(props) {
@@ -25,17 +27,38 @@ class StoryShowContainer extends Component {
       .then(response => {
         let story = response
         this.setState( {
-          story: story
+          story: story,
+          events: story.events
         } )
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render(){
+    let events = this.state.events.map((event) => {
+      if (event.selected_possibility) {
+        return(
+            <Link to={`/stories/${this.state.story.id}/events/${event.id}`} key={event.id}>
+              <PossibilityTile
+                body={event.selected_possibility.body}
+              />
+            </Link>
+        )
+      } else {
+        return(
+            <Link to={`/stories/${this.state.story.id}/events/${event.id}`} key={event.id}>
+              <PossibilityTile
+                body="Explore the possibilities..."
+              />
+            </Link>
+        )
+      }
+    })
     return(
       <div>
         <h1>{ this.state.story.name }</h1>
         <p>{ this.state.story.description }</p>
+        <ul>{ events }</ul>
       </div>
     )
   }
