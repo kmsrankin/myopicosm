@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router'
-import PossibilityTile from './PossibilityTile'
+import EventTile from './EventTile';
 
 class StoryShowContainer extends Component {
   constructor(props) {
@@ -38,19 +37,21 @@ class StoryShowContainer extends Component {
     let events = this.state.events.map((event) => {
       if (event.selected_possibility) {
         return(
-            <Link to={`/stories/${this.state.story.id}/events/${event.id}`} key={event.id}>
-              <PossibilityTile
-                body={event.selected_possibility.body}
-              />
-            </Link>
+          <EventTile
+            storyID={this.state.story.id}
+            eventID={event.id}
+            body={event.selected_possibility.body}
+            key={event.id}
+          />
         )
       } else {
         return(
-            <Link to={`/stories/${this.state.story.id}/events/${event.id}`} key={event.id}>
-              <PossibilityTile
-                body="Explore the possibilities..."
-              />
-            </Link>
+          <EventTile
+            storyID={this.state.story.id}
+            eventID={event.id}
+            body="Explore the possibilities..."
+            key={event.id}
+          />
         )
       }
     })
