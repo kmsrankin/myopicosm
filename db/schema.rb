@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_06_144603) do
+ActiveRecord::Schema.define(version: 2019_05_08_233712) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,17 @@ ActiveRecord::Schema.define(version: 2019_05_06_144603) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.bigint "possibility_id", null: false
+    t.bigint "user_id", null: false
+    t.boolean "upvoted", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["possibility_id"], name: "index_votes_on_possibility_id"
+    t.index ["user_id", "possibility_id"], name: "index_votes_on_user_id_and_possibility_id", unique: true
+    t.index ["user_id"], name: "index_votes_on_user_id"
   end
 
 end
