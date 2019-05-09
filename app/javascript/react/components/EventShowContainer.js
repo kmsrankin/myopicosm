@@ -61,7 +61,6 @@ class EventShowContainer extends Component {
       .then(response => response.json())
       .then(body => {
         let currentPossibilities = this.state.possibilities
-        let possibilities = this.state.possibilities
         this.setState({ possibilities: currentPossibilities.concat(body.possibility) })
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));

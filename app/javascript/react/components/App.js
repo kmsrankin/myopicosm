@@ -9,10 +9,10 @@ export const App = (props) => {
   return (
     <div>
       <Router history={browserHistory}>
-          <Route path="/" component={StoryIndexContainer}/>
-          <Route path="/stories" component={StoryIndexContainer}/>
-          <Route path="/stories/:id" component={StoryShowContainer}/>
-          <Route path="/stories/:story_id/events/:id" component={EventShowContainer}/>
+        <Route path="/" component={StoryIndexContainer}/>
+        <Route path="/stories" component={StoryIndexContainer}/>
+        <Route path="/stories/:story_id/events/:id" component={EventShowContainer}/>
+        <Route path="/stories/:id" component={StoryShowContainer}/>
       </Router>
     </div>
   )

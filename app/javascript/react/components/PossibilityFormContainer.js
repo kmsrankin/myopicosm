@@ -5,10 +5,12 @@ class PossibilityFormContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      possibilityBody: ''
+      possibilityBody: '',
+      errors: {}
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.bodyChangeHandler = this.bodyChangeHandler.bind(this)
+    this.validateSubmission = this.validateSubmission.bind(this)
   }
 
   bodyChangeHandler(event) {
@@ -21,24 +23,49 @@ class PossibilityFormContainer extends Component {
       body: this.state.possibilityBody,
       event_id: this.props.eventID
     }
-    this.props.addNewPossibility(payload)
-    this.setState( { possibilityBody: "" } )
+    if (this.validateSubmission(payload)) {
+      this.props.addNewPossibility(payload);
+      this.setState( { possibilityBody: "" } )
+    }
   }
 
+  validateSubmission(submission) {
+    let bodyPresent;
+    if(submission.body.trim() === ""){
+      let newError = {emptyBody: "Try typing a few letter before submitting the form ya damgus"};
+      this.setState({errors: newError});
+      bodyPresent = false;
+    } else {
+      let errorState = this.state.errors;
+      delete errorState.emptyBody;
+      this.setState({errors: errorState});
+      bodyPresent = true;
+    }
+    return bodyPresent
+  }
+
+
   render() {
+    let errorItems;
+    let errorDiv;
+    if(Object.keys(this.state.errors).length > 0){
+      errorItems = Object.values(this.state.errors).map(error =>{
+        return(
+          <li key={error}>{error}</li>
+        );
+      })
+      errorDiv = <div>{errorItems}</div>;
+    }
     return(
       <form onSubmit={this.handleSubmit} className="new-possibility-form callout">
+        {errorDiv}
         <BodyField
           content={this.state.possibilityBody}
           label="Possibility Body"
           name="possibility-body"
           handleChange={this.bodyChangeHandler}
         />
-
-        <div className="button-group">
-          <button className="button">Clear</button>
-          <input className="button" type="submit" value="Submit" />
-        </div>
+        <input className="button" type="submit" value="Submit" />
       </form>
     )
   }
