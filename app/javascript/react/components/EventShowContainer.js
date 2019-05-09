@@ -7,9 +7,11 @@ class EventShowContainer extends Component {
     super(props);
     this.state = {
       event: {},
-      possibilities: []
+      possibilities: [],
+      userID: null
     }
     this.addNewPossibility = this.addNewPossibility.bind(this)
+    this.handleVote = this.handleVote.bind(this)
   }
 
   componentDidMount() {
@@ -29,7 +31,8 @@ class EventShowContainer extends Component {
         let event = response
         this.setState( {
           event: event,
-          possibilities: event.possibilities
+          possibilities: event.possibilities,
+          userID: event.user_id
         } )
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
@@ -64,12 +67,38 @@ class EventShowContainer extends Component {
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+  handleVote(possibilityID){
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    fetch(`/api/v1/votes`, {
+      method: 'POST',
+      body: JSON.stringify({possibility_id: possibilityID, user_id: this.state.userID}),
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': csrfToken
+      },
+      credentials: 'same-origin'
+    })
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status}(${response.statusText})` ,
+          error = new Error(errorMessage);
+          throw(error);
+        }
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
   render(){
     let possibilities = this.state.possibilities.map((possibility) => {
       return(
         <PossibilityTile
           body={possibility.body}
           key={possibility.id}
+          vote={possibility.current_user_vote_type}
+          handleVote={this.handleVote}
+          id={possibility.id}
         />
       )
     })
