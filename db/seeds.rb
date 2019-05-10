@@ -11,12 +11,13 @@ Possibility.destroy_all
 User.destroy_all
 
 keegan = User.create(email: "keeg@email.com", password: "123456")
+iceking = User.create(email: "iceking@email.com", password: "123456")
 
-big_bad_wolf = Story.create(name: "The Big Bad Wolf", description: "An improvisational reinterpretation of a classic story about a a wolf that huffs and puffs and blows your house down. Let us explore the fragile psyche of this hungry wolf. In the process, may we use this personified figure as a tool to reflect on ourselves and the world around us.")
+big_bad_wolf = Story.create(name: "The Big Bad Wolf", description: "An improvisational reinterpretation of a classic story about a a wolf that huffs and puffs and blows your house down. Let us explore the fragile psyche of this hungry wolf. In the process, may we use this personified figure as a tool to reflect on ourselves and the world around us.", user_id: keegan.id)
 
-fionas_story = Story.create(name: "Fiona's Worst Day", description: "A piece of Adeventure Time fan-fiction about Ice King's fan-fiction series 'Fiona and Cake'. What horrible events will befall our heroes today? How might they overcome them? We will decide.")
+fionas_story = Story.create(name: "Fiona's Worst Day", description: "A new addition to the 'Adeventure Time' fan-fiction series 'Fiona and Cake'. What horrible events will befall our heroes today? How might they overcome them? We will decide.", user_id: iceking.id)
 
-wizards = Story.create(name: "Wizards of Launch Academy", description: "A group of students at Launch Academy share two commonalities. They are all learning web development and they are all wizards. Join us on our magical coding adventures as we dive headfirst into a strange and new profession.")
+wizards = Story.create(name: "Wizards of Launch Academy", description: "A group of students at Launch Academy share two commonalities. They are all learning web development and they are all wizards. Join us on our magical coding adventures as we dive headfirst into a strange and new profession.", user_id: keegan.id)
 
 fiona_e1 = Event.create(story_id: fionas_story.id)
 

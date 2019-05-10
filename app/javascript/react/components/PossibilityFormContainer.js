@@ -44,7 +44,6 @@ class PossibilityFormContainer extends Component {
     return bodyPresent
   }
 
-
   render() {
     let errorItems;
     let errorDiv;

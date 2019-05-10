@@ -4,6 +4,8 @@ class CreateStories < ActiveRecord::Migration[5.2]
       t.string :name, null: false
       t.string :description, null: false
 
+      t.belongs_to :user
+
       t.timestamps null: false
     end
   end
