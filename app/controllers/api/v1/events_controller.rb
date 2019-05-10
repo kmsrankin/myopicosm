@@ -11,10 +11,11 @@ class Api::V1::EventsController < ApplicationController
         winning_possibility = possibility
       end
     end
-    @story = Story.find(params[:story_id])
-    event = Event.find_by(story_id: @story.id)
+    story = Story.find(params[:story_id])
+    event = Event.where(story_id: story.id).last
     if event.update(selected_possibility_id: winning_possibility.id)
-      Event.create(story_id: @story.id)
+      Event.create(story_id: story.id)
+      render json: {story: story}
     end
   end
 end

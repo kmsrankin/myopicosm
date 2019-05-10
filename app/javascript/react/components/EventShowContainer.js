@@ -109,8 +109,10 @@ class EventShowContainer extends Component {
           error = new Error(errorMessage);
           throw(error);
         }
-      }).then(body => {
-        debugger
+      })
+      .then(response => response.json())
+      .then(body => {
+        return window.location.href = `/stories/${body.story.id}`
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
