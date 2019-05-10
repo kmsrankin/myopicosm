@@ -12,6 +12,7 @@ class EventShowContainer extends Component {
     }
     this.addNewPossibility = this.addNewPossibility.bind(this)
     this.handleVote = this.handleVote.bind(this)
+    this.selectPossibility = this.selectPossibility.bind(this)
   }
 
   componentDidMount() {
@@ -89,6 +90,31 @@ class EventShowContainer extends Component {
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+  selectPossibility() {
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+    fetch(`/api/v1/events`, {
+      method: 'POST',
+      body: JSON.stringify({event_id: this.state.event.id, story_id: this.state.event.story_id}),
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-Token': csrfToken
+      },
+      credentials: 'same-origin'
+    })
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status}(${response.statusText})` ,
+          error = new Error(errorMessage);
+          throw(error);
+        }
+      }).then(body => {
+        debugger
+      })
+      .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
   render(){
     let possibilities = this.state.possibilities.map((possibility) => {
       return(
@@ -101,6 +127,14 @@ class EventShowContainer extends Component {
         />
       )
     })
+    let adminButton
+    if (this.state.event.creator && this.state.possibilities.length > 0) {
+      adminButton = (
+        <div>
+          <button onClick={this.selectPossibility}>Add it up!</button>
+        </div>
+      )
+    }
     if (this.state.event.selected_possibility) {
       return(
         <div>
@@ -113,6 +147,7 @@ class EventShowContainer extends Component {
         <div>
           <h1>Which path would you like to take?</h1>
           <ul>{ possibilities }</ul>
+          <div>{adminButton}</div>
           <PossibilityFormContainer
             addNewPossibility={this.addNewPossibility}
             eventID={this.state.event.id}
