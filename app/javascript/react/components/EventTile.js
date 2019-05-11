@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 
 const EventTile = (props) => {
   return(
-    <div>
+    <div className={`${props.className} event`}>
       <Link to={`/stories/${props.storyID}/events/${props.eventID}`} >‡‡   </Link>
       {props.body}
     </div>
