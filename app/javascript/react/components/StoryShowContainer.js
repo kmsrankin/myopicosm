@@ -71,6 +71,7 @@ class StoryShowContainer extends Component {
             eventID={event.id}
             body={event.selected_possibility.body}
             key={event.id}
+            className="past"
           />
         )
       } else {
@@ -80,6 +81,7 @@ class StoryShowContainer extends Component {
             eventID={event.id}
             body="Explore the possibilities..."
             key={event.id}
+            className="present"
           />
         )
       }
@@ -89,18 +91,22 @@ class StoryShowContainer extends Component {
       lastEvent = this.state.events.slice(-1)[0].id
     }
     return(
-      <div>
-        <h1>{ this.state.story.name }</h1>
-        <p>{ this.state.story.description }</p>
-        <a href="#form">Click Here To Jump To The Bottom Of The Page</a>
-        <ul>{ events }</ul>
-        <div id="form">
-          <PossibilityFormContainer
-            addNewPossibility={this.addNewPossibility}
-            eventID={lastEvent}
-          />
+        <div>
+          <div className="story-header">
+            <h1>{ this.state.story.name }</h1>
+            <p className="story-description">{ this.state.story.description }</p>
+            <a href="#form">Click Here To Jump To The Bottom Of The Page</a>
+          </div>
+          <div className="scroll">
+            <ul>{ events }</ul>
+            <div id="form">
+              <PossibilityFormContainer
+                addNewPossibility={this.addNewPossibility}
+                eventID={lastEvent}
+              />
+            </div>
+          </div>
         </div>
-      </div>
     )
   }
 }
