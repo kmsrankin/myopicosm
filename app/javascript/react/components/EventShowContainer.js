@@ -10,7 +10,6 @@ class EventShowContainer extends Component {
       possibilities: [],
       userID: null
     }
-    this.addNewPossibility = this.addNewPossibility.bind(this)
     this.handleVote = this.handleVote.bind(this)
     this.selectPossibility = this.selectPossibility.bind(this)
   }
@@ -35,34 +34,6 @@ class EventShowContainer extends Component {
           possibilities: event.possibilities,
           userID: event.user_id
         } )
-      })
-      .catch(error => console.error(`Error in fetch: ${error.message}`));
-  }
-
-  addNewPossibility(formPayload) {
-    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-    fetch('/api/v1/possibilities', {
-      method: 'POST',
-      body: JSON.stringify(formPayload),
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRF-Token': csrfToken
-      },
-      credentials: 'same-origin'
-    })
-      .then(response => {
-        if (response.ok) {
-          return response;
-        } else {
-          let errorMessage = `${response.status} (${response.statusText})`,
-           error = new Error(errorMessage);
-          throw(error);
-        }
-      })
-      .then(response => response.json())
-      .then(body => {
-        let currentPossibilities = this.state.possibilities
-        this.setState({ possibilities: currentPossibilities.concat(body.possibility) })
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
@@ -141,7 +112,7 @@ class EventShowContainer extends Component {
       return(
         <div>
           <h1>These things could have happened.. But didn't.</h1>
-          <ul>{ possibilities }</ul>
+          <ul>{possibilities}</ul>
         </div>
       )
     } else {
@@ -150,10 +121,6 @@ class EventShowContainer extends Component {
           <h1>Which path would you like to take?</h1>
           <ul>{ possibilities }</ul>
           <div>{adminButton}</div>
-          <PossibilityFormContainer
-            addNewPossibility={this.addNewPossibility}
-            eventID={this.state.event.id}
-          />
         </div>
       )
     }

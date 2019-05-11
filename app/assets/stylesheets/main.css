@@ -1,0 +1,18 @@
+body{
+  font-family: 'Roboto Condensed', sans-serif;
+}
+form{
+  margin: 0 auto;
+  width: 75%;
+}
+p{
+  margin: 0;
+  padding: 0;
+}
+button{
+  border-radius: 6px;
+  color: #ffffff;
+  font-family: 'Roboto Condensed', sans-serif;
+  margin: 0.5em 1em;
+  padding: 0.5em 0.75em 0.5em 0.5em;
+}
