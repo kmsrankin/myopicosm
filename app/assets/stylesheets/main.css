@@ -6,29 +6,49 @@ body{
   background-attachment: fixed;
 }
 form{
-  margin: 0 auto;
   width: 75%;
 }
 p{
-  margin: 0;
+  margin: 0 1em;
   padding: 0;
+  vertical-align: top;
+  display: inline-block;
+  max-width: 85%;
 }
 button{
   border-radius: 6px;
   background-color: #D48BFA;
   font-family: 'Roboto Condensed', sans-serif;
-  margin: 0.5em 1em;
+  margin: 0;
   padding: 0.5em 0.75em 0.5em 0.5em;
+  margin: 10px;
 }
-.past{
+div{
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
-.present{
+.possibility{
+  margin-left: 10%;
+  display: block;
 }
-.event{
+.event, .story{
   margin: 10px;
   padding: 10px;
   border-radius: 30px;
   background-color: #B5E583;
+}
+.story-index{
+  margin-left: 25%;
+  display: block;
+}
+.event{
+  display: inline-block;
+}
+.story{
+  text-align: center;
+  display: block;
+  margin-left: 10%;
+  width: 500px;
 }
 .scroll{
   margin: auto;
@@ -44,7 +64,17 @@ button{
   border-radius: 30px;
   background-color: #B5E583;
 }
+.possibility-form{
+  margin: 0 auto;
+  width: 92%;
+}
 .story-description{
+  display: block;
+  text-align: left;
+  margin-left: 8%;
+}
+.form-header{
+  width: 500px;
   text-align: left;
 }
 ::-webkit-scrollbar {
@@ -73,4 +103,21 @@ input[type="submit"]{
   font-family: 'Roboto Condensed', sans-serif;
   margin: 0.5em 1em;
   padding: 0.5em 0.75em 0.5em 0.5em;
+}
+label{
+  background-color: #B5E583;
+}
+.vote{
+  display: inline-block;
+  vertical-align: top;
+  padding: 10px;
+}
+.vote-counter{
+  margin-left: 25%;
+}
+.last-event{
+  background-color: orange;
+}
+.possibility>p{
+  vertical-align: center;
 }

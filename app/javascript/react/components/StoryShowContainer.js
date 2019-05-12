@@ -71,7 +71,6 @@ class StoryShowContainer extends Component {
             eventID={event.id}
             body={event.selected_possibility.body}
             key={event.id}
-            className="past"
           />
         )
       } else {
@@ -79,9 +78,9 @@ class StoryShowContainer extends Component {
           <EventTile
             storyID={this.state.story.id}
             eventID={event.id}
-            body="Explore the possibilities..."
+            body="Click here to explore the possibilities..."
             key={event.id}
-            className="present"
+            className="last-event"
           />
         )
       }
@@ -98,7 +97,7 @@ class StoryShowContainer extends Component {
             <a href="#form">Click Here To Jump To The Bottom Of The Page</a>
           </div>
           <div className="scroll">
-            <ul>{ events }</ul>
+            <div>{ events }</div>
             <div id="form">
               <PossibilityFormContainer
                 addNewPossibility={this.addNewPossibility}

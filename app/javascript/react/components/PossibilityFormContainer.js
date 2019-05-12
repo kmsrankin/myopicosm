@@ -56,7 +56,7 @@ class PossibilityFormContainer extends Component {
       errorDiv = <div>{errorItems}</div>;
     }
     return(
-      <form onSubmit={this.handleSubmit} className="new-possibility-form callout">
+      <form onSubmit={this.handleSubmit} className="possibility-form callout">
         {errorDiv}
         <BodyField
           content={this.state.possibilityBody}
