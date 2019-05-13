@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PossibilityTile from './PossibilityTile'
+import FileUploadContainer from './FileUploadContainer'
 import { Link } from 'react-router'
-import PossibilityFormContainer from './PossibilityFormContainer'
+
 
 class EventShowContainer extends Component {
   constructor(props) {
@@ -90,6 +91,7 @@ class EventShowContainer extends Component {
   }
 
   render(){
+    debugger
     let possibilities = this.state.possibilities.map((possibility) => {
       return(
         <PossibilityTile
@@ -101,6 +103,14 @@ class EventShowContainer extends Component {
         />
       )
     })
+    let images
+    if (this.state.event.pictures) {
+      images = this.state.event.pictures.map((picture) => {
+        return(
+          <img src={`${picture.event_photo.url}`} key={picture.id}/>
+        )
+      })
+    }
     let adminButton
     let noPossibilitiesNotice
     if (this.state.event.creator && this.state.possibilities.length > 0) {
@@ -122,7 +132,7 @@ class EventShowContainer extends Component {
           </Link>
           <h1 className="story-header">These things could have happened.. But didn't.</h1>
           <ul>{possibilities}</ul>
-
+          {images}
         </div>
       )
     } else {
@@ -135,6 +145,10 @@ class EventShowContainer extends Component {
           <div>{ possibilities }</div>
             {noPossibilitiesNotice}
           <div>{adminButton}</div>
+          <FileUploadContainer
+            eventID={this.state.event.id}
+          />
+          {images}
         </div>
       )
     }

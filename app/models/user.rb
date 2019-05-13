@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :votes
   has_many :possibilities, through: :votes
   has_many :stories
+  has_many :pictures
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
