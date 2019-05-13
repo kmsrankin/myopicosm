@@ -30,11 +30,10 @@ class PossibilityTile extends Component {
       voteStamp = "Vote"
     }
     return (
-      <li>
-        <button onClick={this.clickVote}>{voteStamp}</button>
-        {this.props.vote}
-        {this.props.body}
-      </li>
+      <div className="possibility">
+        <button onClick={this.clickVote} className="vote">{voteStamp}</button>
+        <p className="event">{this.props.body}</p>
+      </div>
     )
   }
 }

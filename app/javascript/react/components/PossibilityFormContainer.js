@@ -56,11 +56,11 @@ class PossibilityFormContainer extends Component {
       errorDiv = <div>{errorItems}</div>;
     }
     return(
-      <form onSubmit={this.handleSubmit} className="new-possibility-form callout">
+      <form onSubmit={this.handleSubmit} className="possibility-form callout">
         {errorDiv}
         <BodyField
           content={this.state.possibilityBody}
-          label="Possibility Body"
+          label="What do you think should happen next?"
           name="possibility-body"
           handleChange={this.bodyChangeHandler}
         />

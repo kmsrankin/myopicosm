@@ -72,22 +72,25 @@ class StoryFormContainer extends Component {
       errorDiv = <div>{errorItems}</div>;
     }
     return(
-      <form onSubmit={this.handleSubmit} className="new-story-form callout">
-        {errorDiv}
-        <BodyField
-          content={this.state.storyName}
-          label="Story Name"
-          name="story-name"
-          handleChange={this.nameChangeHandler}
-        />
-        <BodyField
-          content={this.state.storyDescription}
-          label="Description"
-          name="story-description"
-          handleChange={this.descriptionChangeHandler}
-        />
-        <input className="button" type="submit" value="Submit" />
-      </form>
+      <div>
+        <h3 className="form-header">or...<br/>Start a new one</h3>
+        <form onSubmit={this.handleSubmit} className="new-story-form callout">
+          {errorDiv}
+          <BodyField
+            content={this.state.storyName}
+            label="Choose a name"
+            name="story-name"
+            handleChange={this.nameChangeHandler}
+          />
+          <BodyField
+            content={this.state.storyDescription}
+            label="What would you like this story to be about?"
+            name="story-description"
+            handleChange={this.descriptionChangeHandler}
+          />
+          <input className="button" type="submit" value="Submit" />
+        </form>
+      </div>
     )
   }
 }
