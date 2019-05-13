@@ -72,6 +72,7 @@ class StoryShowContainer extends Component {
             eventID={event.id}
             body={event.selected_possibility.body}
             key={event.id}
+            className="event"
           />
         )
       } else {
@@ -81,7 +82,7 @@ class StoryShowContainer extends Component {
             eventID={event.id}
             body="<== Click here to explore the possibilities..."
             key={event.id}
-            className="last-event"
+            className="last-event event"
           />
         )
       }

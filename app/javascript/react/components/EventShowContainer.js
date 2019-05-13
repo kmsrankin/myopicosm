@@ -91,7 +91,6 @@ class EventShowContainer extends Component {
   }
 
   render(){
-    debugger
     let possibilities = this.state.possibilities.map((possibility) => {
       return(
         <PossibilityTile

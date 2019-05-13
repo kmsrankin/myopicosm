@@ -18,7 +18,6 @@ p{
   margin: 0 1em;
   padding: 0;
   vertical-align: top;
-  display: inline-block;
   max-width: 85%;
 }
 button{
@@ -33,9 +32,12 @@ div{
   margin-top: 10px;
   margin-bottom: 10px;
 }
+.block{
+  display: block;
+  width: 100%;
+}
 .possibility{
   margin-left: 10%;
-  display: block;
 }
 .event, .story{
   margin: 10px;
