@@ -1,6 +1,7 @@
 class EventSerializer < ActiveModel::Serializer
   attributes :id, :story_id, :selected_possibility, :user_id, :creator
   has_many :possibilities
+  has_many :pictures
 
   def selected_possibility
     if object.selected_possibility_id

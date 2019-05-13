@@ -1,5 +1,5 @@
 class StorySerializer < ActiveModel::Serializer
-  attributes :id, :name, :description, :events, :user_id
+  attributes :id, :name, :description, :user_id
   has_many :events
   def user_id
     if current_user
