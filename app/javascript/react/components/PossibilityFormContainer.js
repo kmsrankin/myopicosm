@@ -60,7 +60,7 @@ class PossibilityFormContainer extends Component {
         {errorDiv}
         <BodyField
           content={this.state.possibilityBody}
-          label="Possibility Body"
+          label="What do you think should happen next?"
           name="possibility-body"
           handleChange={this.bodyChangeHandler}
         />

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import EventTile from './EventTile';
 import PossibilityFormContainer from './PossibilityFormContainer'
+import { Link } from 'react-router'
 
 class StoryShowContainer extends Component {
   constructor(props) {
@@ -78,7 +79,7 @@ class StoryShowContainer extends Component {
           <EventTile
             storyID={this.state.story.id}
             eventID={event.id}
-            body="Click here to explore the possibilities..."
+            body="<== Click here to explore the possibilities..."
             key={event.id}
             className="last-event"
           />
@@ -91,10 +92,15 @@ class StoryShowContainer extends Component {
     }
     return(
         <div>
+          <Link to={"/stories"} className="back-button">
+            Select a different story
+          </Link>
           <div className="story-header">
             <h1>{ this.state.story.name }</h1>
             <p className="story-description">{ this.state.story.description }</p>
-            <a href="#form">Click Here To Jump To The Bottom Of The Page</a>
+            <a href="#form">
+              Click Here To Jump To The Bottom Of The Page
+            </a>
           </div>
           <div className="scroll">
             <div>{ events }</div>
