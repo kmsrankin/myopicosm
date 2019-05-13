@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PossibilityTile from './PossibilityTile'
+import { Link } from 'react-router'
 import PossibilityFormContainer from './PossibilityFormContainer'
 
 class EventShowContainer extends Component {
@@ -101,25 +102,38 @@ class EventShowContainer extends Component {
       )
     })
     let adminButton
+    let noPossibilitiesNotice
     if (this.state.event.creator && this.state.possibilities.length > 0) {
       adminButton = (
-        <div>
+        <div className="vote-counter">
           <button onClick={this.selectPossibility}>Add it up!</button>
         </div>
       )
     }
+    // if (this.state.possibilities.length === 0) {
+    //
+    //   )
+    // }
     if (this.state.event.selected_possibility) {
       return(
         <div>
-          <h1>These things could have happened.. But didn't.</h1>
+          <Link to={`/stories/${this.state.event.story_id}`} className="back-button">
+            Return To the Story
+          </Link>
+          <h1 className="story-header">These things could have happened.. But didn't.</h1>
           <ul>{possibilities}</ul>
+
         </div>
       )
     } else {
       return(
         <div>
-          <h1>Which path would you like to take?</h1>
-          <ul>{ possibilities }</ul>
+          <Link to={`/stories/${this.state.event.story_id}`} className="back-button">
+              Return To the Story
+          </Link>
+          <h1 className="story-header">Which path would you like to take?</h1>
+          <div>{ possibilities }</div>
+            {noPossibilitiesNotice}
           <div>{adminButton}</div>
         </div>
       )
