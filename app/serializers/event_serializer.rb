@@ -1,5 +1,5 @@
 class EventSerializer < ActiveModel::Serializer
-  attributes :id, :story_id, :selected_possibility, :user_id, :creator
+  attributes :id, :story_id, :selected_possibility, :user_id, :creator, :select_pictures
   has_many :possibilities
   has_many :pictures
 
@@ -13,6 +13,10 @@ class EventSerializer < ActiveModel::Serializer
     if current_user
       current_user.id
     end
+  end
+
+  def select_pictures
+    object.pictures
   end
 
   def creator

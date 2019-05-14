@@ -91,7 +91,6 @@ class EventShowContainer extends Component {
   }
 
   render(){
-    debugger
     let possibilities = this.state.possibilities.map((possibility) => {
       return(
         <PossibilityTile
@@ -120,10 +119,6 @@ class EventShowContainer extends Component {
         </div>
       )
     }
-    // if (this.state.possibilities.length === 0) {
-    //
-    //   )
-    // }
     if (this.state.event.selected_possibility) {
       return(
         <div>
@@ -132,7 +127,9 @@ class EventShowContainer extends Component {
           </Link>
           <h1 className="story-header">These things could have happened.. But didn't.</h1>
           <ul>{possibilities}</ul>
-          {images}
+          <div id="gallery">
+            {images}
+          </div>
         </div>
       )
     } else {
@@ -148,7 +145,9 @@ class EventShowContainer extends Component {
           <FileUploadContainer
             eventID={this.state.event.id}
           />
-          {images}
+          <div id="gallery">
+            {images}
+          </div>
         </div>
       )
     }

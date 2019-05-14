@@ -66,12 +66,20 @@ class StoryShowContainer extends Component {
   render(){
     let events = this.state.events.map((event) => {
       if (event.selected_possibility) {
+      let image
+      if (event.select_pictures.length > 0) {
+        image = (
+          <img src={event.select_pictures[0].event_photo.url} />
+        )
+      }
         return(
           <EventTile
             storyID={this.state.story.id}
             eventID={event.id}
             body={event.selected_possibility.body}
             key={event.id}
+            className="event"
+            image={image}
           />
         )
       } else {
@@ -81,7 +89,7 @@ class StoryShowContainer extends Component {
             eventID={event.id}
             body="<== Click here to explore the possibilities..."
             key={event.id}
-            className="last-event"
+            className="last-event event"
           />
         )
       }
