@@ -28,9 +28,10 @@ class StoryShowContainer extends Component {
       .then(response => response.json())
       .then(response => {
         let story = response
+        let events = story.events.sort((a, b) => a.id - b.id)
         this.setState( {
           story: story,
-          events: story.events
+          events: events
         } )
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
