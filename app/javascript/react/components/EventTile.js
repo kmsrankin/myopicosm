@@ -16,12 +16,11 @@ class EventTile extends Component {
   }
 
   render(){
-    console.log(this.state)
     let image
     let toggleIndicator
     if (this.props.image) {
       toggleIndicator = (
-        <span>^^<br /></span>
+        <span>i^^g<br /></span>
       )
       if (this.state.selected) {
         image = (
