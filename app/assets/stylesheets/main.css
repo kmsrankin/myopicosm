@@ -133,7 +133,13 @@ input[type="submit"]:hover{
   padding: 6px;
   background-color: #B5E583;
 }
-
+.display {
+  border: 3px solid #63444a;
+  border-radius: 10px;
+  display: block;
+  margin: 0 0 10px;
+  max-width: 100%;
+}
 #gallery {
   columns: 4 200px;
   margin: 50px 15vw;

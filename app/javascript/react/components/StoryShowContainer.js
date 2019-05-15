@@ -66,12 +66,10 @@ class StoryShowContainer extends Component {
   render(){
     let events = this.state.events.map((event) => {
       if (event.selected_possibility) {
-      let image
-      if (event.select_pictures.length > 0) {
-        image = (
-          <img src={event.select_pictures[0].event_photo.url} />
-        )
-      }
+        let image
+        if (event.select_pictures.length > 0) {
+          image = event.select_pictures[0].event_photo.url
+        }
         return(
           <EventTile
             storyID={this.state.story.id}
@@ -99,27 +97,27 @@ class StoryShowContainer extends Component {
       lastEvent = this.state.events.slice(-1)[0].id
     }
     return(
-        <div>
-          <Link to={"/stories"} className="back-button">
-            Select a different story
-          </Link>
-          <div className="story-header">
-            <h1>{ this.state.story.name }</h1>
-            <p className="story-description">{ this.state.story.description }</p>
-            <a href="#form">
-              Click Here To Jump To The Bottom Of The Page
-            </a>
-          </div>
-          <div className="scroll">
-            <div>{ events }</div>
-            <div id="form">
-              <PossibilityFormContainer
-                addNewPossibility={this.addNewPossibility}
-                eventID={lastEvent}
-              />
-            </div>
+      <div>
+        <Link to={"/stories"} className="back-button">
+          Select a different story
+        </Link>
+        <div className="story-header">
+          <h1>{ this.state.story.name }</h1>
+          <p className="story-description">{ this.state.story.description }</p>
+          <a href="#form">
+            Click Here To Jump To The Bottom Of The Page
+          </a>
+        </div>
+        <div className="scroll">
+          <div>{ events }</div>
+          <div id="form">
+            <PossibilityFormContainer
+              addNewPossibility={this.addNewPossibility}
+              eventID={lastEvent}
+            />
           </div>
         </div>
+      </div>
     )
   }
 }
