@@ -54,11 +54,14 @@ class FileUploadContainer extends Component {
 
   render() {
     return(
-      <form onSubmit = {this.handleSubmit}>
+      <form onSubmit={this.handleSubmit}   className="dropzone">
         <section>
-          <div className="dropzone">
-            <Dropzone onDrop={this.onDrop}>
-              <p>Try dropping some files here, or click to select files to upload.</p>
+          <div>
+            <Dropzone
+             onDrop={this.onDrop}
+             style={{"width" : "500px", "height": "100px", "border" : "1px dotted black"}}
+             >
+              <p>Try dropping some files here,<br /> or click to select files to upload.</p>
             </Dropzone>
           </div>
           <aside>
