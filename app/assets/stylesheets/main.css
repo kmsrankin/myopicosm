@@ -157,3 +157,27 @@ input[type="submit"]:hover{
   filter: grayscale(0%);
   opacity: 1;
 }
+.unselected-tab{
+  border-radius: 5px;
+  padding: 6px;
+  background-color: #B5E583;
+}
+.unselected-tab:hover{
+  background-color: #D48BFA;
+  color: #ffffff;
+  padding: 6px;
+  border-radius: 5px;
+}
+.selected-tab{
+  background-color: #0D8045;
+  border-radius: 5px;
+  padding: 6px;
+  color: white;
+}
+.tab-group{
+  margin-left: 35%;
+}
+.dropzone{
+  display: block;
+  margin-left: 25%;
+}
