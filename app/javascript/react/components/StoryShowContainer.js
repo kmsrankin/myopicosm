@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import EventTile from './EventTile';
 import PossibilityFormContainer from './PossibilityFormContainer'
 import { Link } from 'react-router'
+import Thesaurus from './Thesaurus'
 
 class StoryShowContainer extends Component {
   constructor(props) {
@@ -59,7 +60,8 @@ class StoryShowContainer extends Component {
       })
       .then(response => response.json())
       .then(body => {
-        return window.location.href = `/stories/${this.state.story.id}/events/${this.state.events.slice(-1)[0].id}`
+        let eventID = body.possibility.event_id
+        return window.location.href = `/stories/${this.state.story.id}/events/${eventID}`
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }

@@ -7,7 +7,9 @@ class Api::V1::EventsController < ApplicationController
     possibilities = Possibility.where(event_id: params[:event_id])
     winning_possibility = possibilities.first
     possibilities.each do |possibility|
-      if possibility.votes.count > winning_possibility.votes.count
+      past_winner_votes = winning_possibility.votes.select {|vote| vote.upvoted}
+      new_votes = possibility.votes.select {|vote| vote.upvoted}
+      if new_votes.count > past_winner_votes.count
         winning_possibility = possibility
       end
     end
