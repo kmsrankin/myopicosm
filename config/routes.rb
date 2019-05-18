@@ -13,6 +13,8 @@ Rails.application.routes.draw do
       resources :possibilities, only: [:create]
       resources :votes, only: [:create]
       resources :pictures, only: [:create]
+      resources :thesaurus, only: [:search]
+      post 'thesaurus/search', to: 'thesaurus#search'
     end
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
