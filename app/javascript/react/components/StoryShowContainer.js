@@ -37,7 +37,7 @@ class StoryShowContainer extends Component {
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
-
+  
   addNewPossibility(formPayload) {
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     fetch('/api/v1/possibilities', {
@@ -71,7 +71,7 @@ class StoryShowContainer extends Component {
       if (event.selected_possibility) {
         let image
         if (event.select_pictures.length > 0) {
-          image = event.select_pictures[0].event_photo.url
+          image = event.select_pictures[Math.floor(Math.random() * event.select_pictures.length)].event_photo.url
         }
         return(
           <EventTile
@@ -115,7 +115,6 @@ class StoryShowContainer extends Component {
           <div className="thesaurus">
            <Thesaurus />
           </div>
-          <div className="line"> </div>
           <div className="scroll">
             <div>{ events }</div>
             <div id="form">
