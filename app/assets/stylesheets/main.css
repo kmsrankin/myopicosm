@@ -100,10 +100,10 @@ button:hover{
   background: #b30000;
 }
 label{
-  background-color: rgb(135,205,235, 0.8);
+  background-color: rgba(135,205,235, 0.8);
 }
 textarea{
-  box-shadow: 3px 3px 5px 6px rgb(135,205,235, 0.6);
+  box-shadow: 3px 3px 5px 6px rgba(135,205,235, 0.6);
 }
 input[type="submit"]{
   border-radius: 6px;
@@ -124,7 +124,7 @@ input[type="submit"]:hover{
   margin-left: 25%;
 }
 .last-event{
-  background-color: rgb(135,205,235, 0.5);
+  background-color: rgba(135,205,235, 0.5);
 }
 .back-button{
   margin-left: 10%;
