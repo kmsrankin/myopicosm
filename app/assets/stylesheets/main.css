@@ -34,6 +34,7 @@ button:hover{
 .block{
   display: block;
   width: 100%;
+  display: flex;
 }
 .possibility{
   margin-left: 10%;
@@ -59,11 +60,12 @@ button:hover{
   width: 500px;
 }
 .scroll{
-  margin: auto;
+  display: inline-block;
   margin-top: 10px;
   width: 700px;
-  height: 500px;
+  height: 550px;
   overflow-y: scroll;
+  border-right: solid green 10px;
 }
 .story-header{
   text-align: center;
@@ -179,4 +181,14 @@ input[type="submit"]:hover{
 .dropzone{
   display: block;
   margin-left: 25%;
+}
+.thesaurus{
+  display: inline-block;
+  width: 33%;
+  vertical-align: top;
+  background-color: rgba(135,205,235, 0.5);
+  border: solid black 2px;
+  margin-left: 2%;
+  margin-top: 10px;
+  border-right: solid green 10px;
 }

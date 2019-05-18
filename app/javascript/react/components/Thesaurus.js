@@ -105,6 +105,7 @@ class Thesaurus extends Component {
     }
     return (
       <div>
+        <h3>Handy Thesaurus</h3>
         <form onSubmit={this.handleSubmit} className="query-form callout">
           {errorDiv}
           <BodyField
