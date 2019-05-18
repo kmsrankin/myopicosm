@@ -111,13 +111,19 @@ class StoryShowContainer extends Component {
             Click Here To Jump To The Bottom Of The Page
           </a>
         </div>
-        <div className="scroll">
-          <div>{ events }</div>
-          <div id="form">
-            <PossibilityFormContainer
-              addNewPossibility={this.addNewPossibility}
-              eventID={lastEvent}
-            />
+        <div className="block">
+          <div className="thesaurus">
+           <Thesaurus />
+          </div>
+          <div className="line"> </div>
+          <div className="scroll">
+            <div>{ events }</div>
+            <div id="form">
+              <PossibilityFormContainer
+                addNewPossibility={this.addNewPossibility}
+                eventID={lastEvent}
+              />
+            </div>
           </div>
         </div>
       </div>
