@@ -4,7 +4,9 @@ class Api::V1::EventsController < ApplicationController
   end
 
   def create
-    possibilities = Possibility.where(event_id: params[:event_id])
+    event = Event.find(params[:event_id])
+    story = Story.find(params[:story_id])
+    possibilities = Possibility.where(event_id: event.id)
     winning_possibility = possibilities.first
     potential_winners = []
     possibilities.each do |possibility|
@@ -20,8 +22,6 @@ class Api::V1::EventsController < ApplicationController
     if potential_winners.length > 1
       winning_possibility = potential_winners.sample
     end
-    story = Story.find(params[:story_id])
-    event = Event.where(story_id: story.id).last
     if event.update(selected_possibility_id: winning_possibility.id)
       Event.create(story_id: story.id)
       render json: {story: story}
