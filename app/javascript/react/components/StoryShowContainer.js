@@ -37,7 +37,7 @@ class StoryShowContainer extends Component {
       })
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
-  
+
   addNewPossibility(formPayload) {
     const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
     fetch('/api/v1/possibilities', {
@@ -100,7 +100,7 @@ class StoryShowContainer extends Component {
       lastEvent = this.state.events.slice(-1)[0].id
     }
     return(
-      <div>
+      <div className="show-container">
         <Link to={"/stories"} className="back-button">
           Select a different story
         </Link>

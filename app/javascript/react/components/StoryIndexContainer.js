@@ -71,7 +71,7 @@ class StoryIndexContainer extends Component {
       )
     })
     return(
-      <div>
+      <div className="show-container">
         <h2 className="story-header">Choose Your Story</h2>
         <div className="story-index">{stories}
         <StoryFormContainer

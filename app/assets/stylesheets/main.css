@@ -6,7 +6,9 @@ body{
   background-attachment: fixed;
 }
 form{
-  width: 75%;
+  width: 30%;
+  margin: 0 auto;
+  display: block;
 }
 a:hover{
   background-color: #D48BFA;
@@ -46,33 +48,37 @@ button:hover{
   background-color: #B5E583;
 }
 .story-index{
-  margin-left: 25%;
   display: block;
 }
 .event{
   display: inline-block;
 }
 .story{
+  margin: 0 auto;
+  margin-bottom: 10px;
   text-align: center;
   display: block;
-  margin-left: 10%;
-  margin-right: 10%;
   width: 500px;
 }
 .scroll{
   display: inline-block;
   margin-top: 10px;
-  width: 700px;
-  height: 550px;
+  width: 47%;
+  height: 75vh;
   overflow-y: scroll;
-  border-right: solid green 10px;
+  border-right: solid #D9FFFFFF 10px;
+  border-left: solid #D9FFFFFF 10px;
 }
 .story-header{
   text-align: center;
-  margin: 25px 100px 10px;
+  width: 90%;
+  display: block;
+  margin: 0 auto;
   padding: 10px;
   border-radius: 30px;
   background-color: #B5E583;
+  height: 15%;
+  margin-bottom: 10px;
 }
 .possibility-form{
   margin: 0 auto;
@@ -85,7 +91,8 @@ button:hover{
 }
 .form-header{
   width: 500px;
-  text-align: left;
+  display: block;
+  margin: 0 auto;
 }
 ::-webkit-scrollbar {
   width: 8px;
@@ -130,6 +137,7 @@ input[type="submit"]:hover{
 }
 .back-button{
   margin-left: 10%;
+  margin-top: 20px;
   border-radius: 5px;
   padding: 6px;
   background-color: #B5E583;
@@ -176,7 +184,7 @@ input[type="submit"]:hover{
   color: white;
 }
 .tab-group{
-  margin-left: 35%;
+  margin-left: 50%;
 }
 .dropzone{
   display: block;
@@ -188,7 +196,10 @@ input[type="submit"]:hover{
   vertical-align: top;
   background-color: rgba(135,205,235, 0.5);
   border: solid black 2px;
-  margin-left: 2%;
+  margin-left: 10%;
   margin-top: 10px;
-  border-right: solid green 10px;
+  padding-left: 20px;
+}
+.show-container{
+  margin-top: 20px;
 }
