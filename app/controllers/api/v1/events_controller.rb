@@ -19,9 +19,8 @@ class Api::V1::EventsController < ApplicationController
         potential_winners << possibility
       end
     end
-    if potential_winners.length > 1
-      winning_possibility = potential_winners.sample
-    end
+    winning_possibility = potential_winners.sample
+
     if event.update(selected_possibility_id: winning_possibility.id)
       Event.create(story_id: story.id)
       render json: {story: story}

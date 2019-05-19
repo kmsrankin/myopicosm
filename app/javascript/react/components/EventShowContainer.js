@@ -58,7 +58,7 @@ class EventShowContainer extends Component {
 
     if (this.state.selectedDisplay === "possibilities") {
       return (
-        <div>
+        <div className="show-container">
           <Link to={`/stories/${this.state.event.story_id}`} className="back-button">
             Return To the Story
           </Link>
@@ -84,7 +84,7 @@ class EventShowContainer extends Component {
       )
     } else if (this.state.selectedDisplay === "gallery") {
       return (
-        <div>
+        <div className="show-container">
           <Link to={`/stories/${this.state.event.story_id}`} className="back-button">
               Return To the Story
           </Link>
