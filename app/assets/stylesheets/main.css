@@ -203,3 +203,6 @@ input[type="submit"]:hover{
 .show-container{
   margin-top: 20px;
 }
+.query-form{
+  margin: 0
+}
