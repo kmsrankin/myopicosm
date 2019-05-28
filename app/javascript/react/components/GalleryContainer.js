@@ -7,6 +7,11 @@ class GalleryContainer extends Component {
     this.state = {
       images: this.props.images
     }
+    this.renderNewImage = this.renderNewImage.bind(this)
+  }
+
+  renderNewImage(image){
+    this.setState( { images: this.state.images.concat(image) } )
   }
 
   render(){
@@ -20,10 +25,11 @@ class GalleryContainer extends Component {
       <div>
         <h1 className="story-header">Event Gallery</h1>
         <FileUploadContainer
-        eventID={this.props.eventID}
+          eventID={this.props.eventID}
+          addNewImage={this.renderNewImage}
         />
         <div id="gallery">
-        {images}
+          {images}
         </div>
       </div>
     )

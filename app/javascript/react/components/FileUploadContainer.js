@@ -39,7 +39,8 @@ class FileUploadContainer extends Component {
     })
     .then(response => response.json())
     .then(body => {
-      this.setState({ message: body.message })
+      this.props.addNewImage(body)
+      this.setState( { message: body.message } )
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }

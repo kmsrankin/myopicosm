@@ -106,14 +106,16 @@ class Thesaurus extends Component {
     return (
       <div>
         <h3>Handy Thesaurus</h3>
-        <form onSubmit={this.handleSubmit} className="query-form callout">
+        <form onSubmit={this.handleSubmit} className="query-form">
           {errorDiv}
-          <BodyField
-            content={this.state.queryBody}
-            label="Enter a word"
-            name="query-body"
-            handleChange={this.bodyChangeHandler}
-          />
+          <label>Enter a word
+            <input
+              type="text"
+              name="query-body"
+              value={this.state.queryBody}
+              onChange={this.bodyChangeHandler}
+            />
+          </label>
           <input className="button" type="submit" value="Submit" />
         </form>
         {output}
