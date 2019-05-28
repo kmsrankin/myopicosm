@@ -3,12 +3,15 @@ Rails.application.routes.draw do
   root "stories#index"
   resources :stories, only: [:show, :index] do
     resources :events, only: [:show]
+    resources :memberships, only: [:index]
   end
 
 
   namespace :api do
     namespace :v1 do
-      resources :stories, only: [:show, :index, :create]
+      resources :stories, only: [:show, :index, :create] do
+        resources :memberships, only: [:index]
+      end
       resources :events, only: [:show, :create]
       resources :possibilities, only: [:create]
       resources :votes, only: [:create]
