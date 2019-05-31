@@ -19,7 +19,8 @@ big_bad_wolf = Story.create(name: "The Big Bad Wolf", description: "An improvisa
 
 fionas_story = Story.create(name: "Fionna and Cake!", description: "A new addition to the 'Adventure Time' fan-fiction series 'Fiona and Cake'. What horrible events will befall our heroes today? How might they overcome them? We will decide.", user_id: iceking.id)
 
-wizards = Story.create(name: "Wizards of Launch Academy", description: "A group of students at Launch Academy share two commonalities. They are all learning web development and they are all wizards. Join us on our magical coding adventures as we dive headfirst into a strange and new profession.", user_id: keegan.id)
+wizards = Story.create(name: "Wizards of Launch Academy", description: "A group of students at Launch Academy share two commonalities. They are all learning web development and they are all wizards. Join us on our magical coding adventures as we dive headfirst into a strange and new profession.", user_id: keegan.id, private: true)
+Membership.create(story_id: wizards.id, user_id: keegan.id)
 wolf_e1 = Event.create(story_id: big_bad_wolf.id)
 wizards_e1 = Event.create(story_id: wizards.id)
 
