@@ -1,6 +1,9 @@
 class Api::V1::EventsController < ApplicationController
   def show
-    render json: Event.find(params[:id])
+    event = Event.find(params[:id])
+    if !Story.find(event.story_id).private || Membership.find_by(user_id: current_user.id, story_id: event.story_id)
+      render json: event
+    end
   end
 
   def create
