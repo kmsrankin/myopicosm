@@ -9,7 +9,7 @@ class StoryMemberIndex extends Component {
   }
 
   componentDidMount() {
-    let storyId = this.props.params.id
+    let storyId = this.props.id
     fetch(`/api/v1/stories/${storyId}/memberships`)
       .then(response => {
         if (response.ok) {
@@ -22,6 +22,7 @@ class StoryMemberIndex extends Component {
       })
       .then(response => response.json())
       .then(response => {
+        debugger
         this.setState( {
           members: response
         } )

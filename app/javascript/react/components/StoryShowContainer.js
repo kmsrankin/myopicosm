@@ -3,6 +3,7 @@ import EventTile from './EventTile';
 import PossibilityFormContainer from './PossibilityFormContainer'
 import { Link } from 'react-router'
 import Thesaurus from './Thesaurus'
+import StoryMemberIndex from './StoryMemberIndex'
 
 class StoryShowContainer extends Component {
   constructor(props) {
@@ -106,13 +107,13 @@ class StoryShowContainer extends Component {
       lastEvent = this.state.events.slice(-1)[0].id
     }
     let displayedTool = (
-        <Thesaurus />
+      <Thesaurus />
     )
     if (this.state.selectedTool === "Members") {
       displayedTool = (
-        <div>
-          Members
-        </div>
+        <StoryMemberIndex
+          id={this.props.params.id}
+        />
       )
     }
 
