@@ -9,9 +9,11 @@ class StoryShowContainer extends Component {
     super(props);
     this.state = {
       story: {},
-      events: []
+      events: [],
+      selectedTool: "Thesaurus"
     }
     this.addNewPossibility = this.addNewPossibility.bind(this)
+    this.setSelectedTool = this.setSelectedTool.bind(this)
   }
 
   componentDidMount() {
@@ -66,6 +68,10 @@ class StoryShowContainer extends Component {
       .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
+  setSelectedTool(event){
+      this.setState( { selectedTool: event.target.innerText } )
+  }
+
   render(){
     let events = this.state.events.map((event) => {
       if (event.selected_possibility) {
@@ -99,6 +105,22 @@ class StoryShowContainer extends Component {
     if (this.state.events.length > 0) {
       lastEvent = this.state.events.slice(-1)[0].id
     }
+    let displayedTool = (
+        <Thesaurus />
+    )
+    if (this.state.selectedTool === "Members") {
+      displayedTool = (
+        <div>
+          Members
+        </div>
+      )
+    }
+
+    let buttonList = ["Thesaurus", "Members"].map((tool) => {
+      return (
+        <button onClick={ this.setSelectedTool } key={ tool }>{ tool }</button>
+      )
+    })
     return(
       <div className="show-container">
         <Link to={"/stories"} className="back-button">
@@ -112,8 +134,9 @@ class StoryShowContainer extends Component {
           </a>
         </div>
         <div className="block">
-          <div className="thesaurus">
-           <Thesaurus />
+          <div className="toolkit">
+            { buttonList }
+            { displayedTool }
           </div>
           <div className="scroll">
             <div>{ events }</div>
