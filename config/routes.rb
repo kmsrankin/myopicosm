@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       resources :events, only: [:show, :create]
       resources :possibilities, only: [:create]
       resources :votes, only: [:create]
+      resources :memberships, only: [:create]
       resources :pictures, only: [:create]
       resources :thesaurus, only: [:search]
       post 'thesaurus/search', to: 'thesaurus#search'
