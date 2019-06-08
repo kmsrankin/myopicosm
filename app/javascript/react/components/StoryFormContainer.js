@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import BodyField from './BodyField'
+import BodyField from './BodyField';
+import Checkbox from './Checkbox'
 
 class StoryFormContainer extends Component {
   constructor(props) {
@@ -7,7 +8,14 @@ class StoryFormContainer extends Component {
     this.state = {
       storyName: '',
       storyDescription: '',
-      errors: {}
+      errors: {},
+      checkboxes: ["private"].reduce(
+        (options, option) => ({
+          ...options,
+          [option]: false
+        }),
+        {}
+      )
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.nameChangeHandler = this.nameChangeHandler.bind(this)
@@ -60,6 +68,17 @@ class StoryFormContainer extends Component {
     }
   }
 
+  handleCheckboxChange(changeEvent){
+    const { name } = changeEvent.target;
+
+    this.setState(prevState => ({
+      checkboxes: {
+        ...prevState.checkboxes,
+        [name]: !prevState.checkboxes[name]
+      }
+    }));
+  };
+
   render() {
     let errorItems;
     let errorDiv;
@@ -71,6 +90,17 @@ class StoryFormContainer extends Component {
       })
       errorDiv = <div>{errorItems}</div>;
     }
+    let createCheckbox = option => (
+      <Checkbox
+        label={option}
+        isSelected={this.state.checkboxes[option]}
+        onCheckboxChange={this.handleCheckboxChange}
+        key={option}
+      />
+    );
+
+    let createCheckboxes = () => ["private"].map((option) => createCheckbox(option));
+
     return(
       <div>
         <h3 className="form-header">or...<br/>Start a new one</h3>
@@ -88,6 +118,7 @@ class StoryFormContainer extends Component {
             name="story-description"
             handleChange={this.descriptionChangeHandler}
           />
+          { createCheckboxes() }
           <input className="button" type="submit" value="Submit" />
         </form>
       </div>
