@@ -21,9 +21,10 @@ class Api::V1::StoriesController < ApplicationController
   end
 
   def create
-    story = Story.create(name: params[:name], description: params[:description], user_id: current_user.id)
+    story = Story.create(name: params[:name], description: params[:description], user_id: current_user.id, private: params[:private])
     render json: story
     if story
+      Membership.create(story_id: story.id, user_id: current_user.id)
       Event.create(story_id: story.id)
     end
   end

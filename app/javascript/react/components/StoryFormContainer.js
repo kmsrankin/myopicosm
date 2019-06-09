@@ -21,6 +21,7 @@ class StoryFormContainer extends Component {
     this.nameChangeHandler = this.nameChangeHandler.bind(this)
     this.descriptionChangeHandler = this.descriptionChangeHandler.bind(this)
     this.validateSubmission = this.validateSubmission.bind(this)
+    this.handleCheckboxChange = this.handleCheckboxChange.bind(this)
   }
 
   nameChangeHandler(event) {
@@ -35,13 +36,15 @@ class StoryFormContainer extends Component {
     event.preventDefault()
     let payload = {
       name: this.state.storyName,
-      description: this.state.storyDescription
+      description: this.state.storyDescription,
+      private: this.state.checkboxes["private"]
     }
     if (this.validateSubmission(payload)) {
       this.props.addNewStory(payload);
       this.setState( {
         storyName: "",
-        storyDescription: ""
+        storyDescription: "",
+        checkboxes: { "private": false }
       } )
     }
   }
@@ -69,7 +72,7 @@ class StoryFormContainer extends Component {
   }
 
   handleCheckboxChange(changeEvent){
-    const { name } = changeEvent.target;
+    let { name } = changeEvent.target;
 
     this.setState(prevState => ({
       checkboxes: {
