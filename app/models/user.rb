@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :votes
   has_many :possibilities, through: :votes
   has_many :memberships
+  has_many :stories, through: :memberships
   has_many :stories
   has_many :pictures
 
