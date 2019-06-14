@@ -3,7 +3,7 @@ require 'spec_helper'
 RSpec.describe Event do
 
   describe "New Event is created" do
-    it "shoul belong to a story and should not have a selected possibility by default" do
+    it "should belong to a story and should not have a selected possibility by default" do
       user = User.create!(email: "Bob@email.com", password: "123456")
       story = Story.create!(name: "This one is different", description: "uniqueness", user_id: user.id)
       event = Event.create!(story_id: story.id)
