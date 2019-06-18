@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  root "stories#index"
+  root "homes#home"
   resources :stories, only: [:show, :index] do
     resources :events, only: [:show]
     resources :memberships, only: [:index]
   end
-
 
   namespace :api do
     namespace :v1 do
