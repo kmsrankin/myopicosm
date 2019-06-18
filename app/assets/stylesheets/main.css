@@ -206,3 +206,15 @@ input[type="submit"]:hover{
 .query-form{
   margin: 0
 }
+.devise-heading{
+  display: block;
+  margin-top: 5%;
+  margin: 0 auto;
+  text-align: center;
+}
+.shared-links{
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  width: 15%;
+}
