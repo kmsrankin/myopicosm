@@ -4,6 +4,7 @@ import PossibilityFormContainer from './PossibilityFormContainer'
 import { Link } from 'react-router'
 import Thesaurus from './Thesaurus'
 import StoryMemberIndex from './StoryMemberIndex'
+import Instructions from './Instructions'
 
 class StoryShowContainer extends Component {
   constructor(props) {
@@ -117,7 +118,13 @@ class StoryShowContainer extends Component {
       )
     }
 
-    let buttonList = ["Thesaurus", "Members"].map((tool) => {
+    if (this.state.selectedTool === "Instructions") {
+      displayedTool = (
+        <Instructions/>
+      )
+    }
+
+    let buttonList = ["Thesaurus", "Members", "Instructions"].map((tool) => {
       return (
         <button onClick={ this.setSelectedTool } key={ tool }>{ tool }</button>
       )
