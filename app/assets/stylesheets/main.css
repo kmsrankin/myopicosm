@@ -193,6 +193,7 @@ input[type="submit"]:hover{
 .toolkit{
   display: inline-block;
   width: 33%;
+  height: 75vh;
   vertical-align: top;
   background-color: rgba(135,205,235, 0.5);
   border: solid black 2px;
@@ -217,4 +218,8 @@ input[type="submit"]:hover{
   margin: 0 auto;
   text-align: center;
   width: 15%;
+}
+.instructions-scroll{
+  height: 55vh;
+  overflow-y: scroll;
 }

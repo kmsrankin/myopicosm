@@ -2,7 +2,7 @@ import React from 'react'
 
 const Instructions = (props) => {
   return(
-    <div>
+    <div className="instructions-scroll">
       <h3>Instructions</h3>
       <p>
         First time using Myopicosm? To get started, head to the bottom of the story scroll. There you will find a form where you can make suggestions for what should happen next in the story. Make sure that you know what is happening in the story before you make submissions.
