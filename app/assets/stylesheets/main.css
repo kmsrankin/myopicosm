@@ -110,6 +110,9 @@ button:hover{
 }
 label{
   background-color: rgba(135,205,235, 0.8);
+  border-radius: 10px;
+  padding: 2px;
+  margin: 1px;
 }
 textarea{
   box-shadow: 3px 3px 5px 6px rgba(135,205,235, 0.6);
@@ -222,4 +225,9 @@ input[type="submit"]:hover{
 .instructions-scroll{
   height: 55vh;
   overflow-y: scroll;
+}
+.login-form{
+  padding: 10px;
+  border-radius: 30px;
+  background-color: #B5E583;
 }

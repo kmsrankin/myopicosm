@@ -1,7 +1,7 @@
 # Myopicosm
 Myopicosm is a collaborative and experimental story-telling framework with a Ruby on Rails back end, a PostgreSQL database, and a React front end. This simple application enables users to submit narrations and vote to determine what should happen next in a story. The current mechanism of progressing the story relies on the story owner clicking a button that adds up the votes and assigns the winning 'possibility' to the associated event.
 
-I created Myopicosm as my 2-week 'breakable toy' project at end of Launch Academy's 18 week immersive program. It is a thorough representation of the skills that I learned during my time as a bootcamp student.
+I created Myopicosm as my 2-week 'breakable toy' project at the end of Launch Academy's 18 week immersive program. It is a thorough representation of the skills that I learned during my time as a bootcamp student.
 
 ## Features:
 * Create / read public or private stories
